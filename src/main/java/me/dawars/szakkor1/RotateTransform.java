@@ -32,21 +32,29 @@ public class RotateTransform extends PApplet {
 
         pushMatrix(); // saves the current transformation
 
-        rotate(angle);
+        rotate(angle); // TODO 1: comment out
         angle += 0.01f;
 
         drawOrdinaryShape();
 
-        // vector to an ordinary point
-        Vector3f vec = new Vector3f(0, 1, 0);
+        // P point
+        int x = 0;
+        int y = 1;
 
-        stroke(0);
-        strokeWeight(0.03f);
-        line(0, 0, vec.x, vec.y);
+        // TODO 2: rotate P point with @angle here
+
+
+
+
+
+
+        stroke(0xffff0000);
+        strokeWeight(0.05f);
+        line(0, 0, x, y);
 
         popMatrix(); // resets the previous transformation (removes rotation)
 
-        drawCoord();
+        drawCoord(unit);
     }
 
     /**
@@ -73,8 +81,10 @@ public class RotateTransform extends PApplet {
     /**
      * Draws the coordinate axes
      * Up and Right are the positive directions
+     *
+     * @param unit
      */
-    private void drawCoord() {
+    private void drawCoord(float unit) {
         stroke(0);
 
         // coordinate axis
@@ -83,14 +93,22 @@ public class RotateTransform extends PApplet {
         line(-width / 2, 0, width / 2, 0);
         line(0, -height / 2, 0, height / 2);
 
-        fill(255f);
+        // arrows
+        float side = 0.2f;
+        fill(0f);
+        noStroke();
+        triangle(0, height / unit / 2, side, height / unit / 2 - side, -side, height / unit / 2 - side);
+        triangle(width / unit / 2, 0, width / unit / 2 - side, -side, width / unit / 2 - side, side);
+
         // mark numbers
+        fill(255f);
+        stroke(0);
         strokeWeight(0.05f);
-        for (int x = 0; x <= width / 2; x++) {
+        for (int x = 0; x <= width / unit / 2; x++) {
             point(x, 0);
             point(-x, 0);
         }
-        for (int y = 1; y <= height / 2; y++) {
+        for (int y = 1; y <= height / unit / 2; y++) {
             point(0, y);
 
             point(0, -y);
