@@ -1,8 +1,10 @@
 package me.dawars.szakkor1;
 
-import org.joml.Matrix3x2f;
-import org.joml.Vector3f;
+import org.joml.Vector2f;
 import processing.core.PApplet;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RotateTransform extends PApplet {
 
@@ -23,7 +25,7 @@ public class RotateTransform extends PApplet {
 
     @Override
     public void draw() {
-        background(200);
+        background(200f);
         // move (0, 0) to the center of the window
         translate(width / 2, height / 2);
         // calculate the length of a unit in pixels
@@ -38,19 +40,17 @@ public class RotateTransform extends PApplet {
         drawOrdinaryShape();
 
         // P point
-        int x = 0;
-        int y = 1;
+        Vector2f P = new Vector2f(1, 0);
 
         // TODO 2: rotate P point with @angle here
 
-
-
-
+        float x0 = P.x; // change these
+        float y0 = P.y; // change these
 
 
         stroke(0xffff0000);
         strokeWeight(0.05f);
-        line(0, 0, x, y);
+        line(0, 0, x0, y0);
 
         popMatrix(); // resets the previous transformation (removes rotation)
 
@@ -61,20 +61,30 @@ public class RotateTransform extends PApplet {
      * Draws a random shape
      */
     private void drawOrdinaryShape() {
+        List<Vector2f> points = new ArrayList<>();
+        points.add(new Vector2f(-1, 2));
+        points.add(new Vector2f(5, 4));
+        points.add(new Vector2f(3, 0));
+        points.add(new Vector2f(4, -3));
+        points.add(new Vector2f(0, -2));
+        points.add(new Vector2f(-4, -3));
+        points.add(new Vector2f(-2, 0));
+        points.add(new Vector2f(-3, 3));
+        points.add(new Vector2f(-2, 4));
+        points.add(new Vector2f(0, 3));
 
         noStroke();
         fill(0, 210, 255);
+
         beginShape();
-        curveVertex(-1, 2);
-        curveVertex(5, 4);
-        curveVertex(3, 0);
-        curveVertex(4, -3);
-        curveVertex(0, -2);
-        curveVertex(-4, -3);
-        curveVertex(-2, 0);
-        curveVertex(-3, 3);
-        curveVertex(-2, 4);
-        curveVertex(0, 3);
+        for (Vector2f point : points) {
+            // TODO 3: rotate every point with @angle here, hint coming next week
+
+            float x0 = point.x; // change these
+            float y0 = point.y; // change these
+
+            curveVertex(x0, y0);
+        }
         endShape();
     }
 
