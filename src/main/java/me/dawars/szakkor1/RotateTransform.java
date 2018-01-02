@@ -1,7 +1,7 @@
 package me.dawars.szakkor1;
 
-import org.joml.Vector2f;
 import processing.core.PApplet;
+import processing.core.PVector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class RotateTransform extends PApplet {
         drawOrdinaryShape();
 
         // P point
-        Vector2f P = new Vector2f(1, 0);
+        PVector P = new PVector(1, 0);
 
         // TODO 2: rotate P point with @angle here
 
@@ -61,23 +61,23 @@ public class RotateTransform extends PApplet {
      * Draws a random shape
      */
     private void drawOrdinaryShape() {
-        List<Vector2f> points = new ArrayList<>();
-        points.add(new Vector2f(-1, 2));
-        points.add(new Vector2f(5, 4));
-        points.add(new Vector2f(3, 0));
-        points.add(new Vector2f(4, -3));
-        points.add(new Vector2f(0, -2));
-        points.add(new Vector2f(-4, -3));
-        points.add(new Vector2f(-2, 0));
-        points.add(new Vector2f(-3, 3));
-        points.add(new Vector2f(-2, 4));
-        points.add(new Vector2f(0, 3));
+        List<PVector> points = new ArrayList<>();
+        points.add(new PVector(-1, 2));
+        points.add(new PVector(5, 4));
+        points.add(new PVector(3, 0));
+        points.add(new PVector(4, -3));
+        points.add(new PVector(0, -2));
+        points.add(new PVector(-4, -3));
+        points.add(new PVector(-2, 0));
+        points.add(new PVector(-3, 3));
+        points.add(new PVector(-2, 4));
+        points.add(new PVector(0, 3));
 
         noStroke();
         fill(0, 210, 255);
 
         beginShape();
-        for (Vector2f point : points) {
+        for (PVector point : points) {
             // TODO 3: rotate every point with @angle here, hint coming next week
 
             float x0 = point.x; // change these

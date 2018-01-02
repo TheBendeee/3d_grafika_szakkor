@@ -11,9 +11,6 @@ repositories {
 
 dependencies {
 
-    // https://mvnrepository.com/artifact/org.joml/joml
-    compile group: 'org.joml', name: 'joml', version: '1.9.6'
-    // https://mvnrepository.com/artifact/org.processing/core
     compile group: 'org.processing', name: 'core', version: '3.3.6'
-
+    compile group: 'org.jogamp.jogl', name: 'jogl-all-main', version: '2.3.2'
 }
