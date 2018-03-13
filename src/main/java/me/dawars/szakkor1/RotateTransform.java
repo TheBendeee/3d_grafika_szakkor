@@ -1,6 +1,8 @@
 package me.dawars.szakkor1;
 
 import processing.core.PApplet;
+import processing.core.PMatrix2D;
+import processing.core.PMatrix3D;
 import processing.core.PVector;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class RotateTransform extends PApplet {
 
         pushMatrix(); // saves the current transformation
 
-        rotate(angle); // TODO 1: comment out
+//        rotate(angle); // TODO 1: comment out
         angle += 0.01f;
 
         drawOrdinaryShape();
@@ -47,6 +49,14 @@ public class RotateTransform extends PApplet {
         float x0 = P.x; // change these
         float y0 = P.y; // change these
 
+        // solution for hint 1
+        x0 = P.x * cos(angle);
+        y0 = P.x * sin(angle);
+
+        /*
+        // solution for hint 2
+        x0 = P.y * -sin(angle);
+        y0 = P.y * cos(angle);*/
 
         stroke(0xffff0000);
         strokeWeight(0.05f);
@@ -76,12 +86,28 @@ public class RotateTransform extends PApplet {
         noStroke();
         fill(0, 210, 255);
 
+        PVector p2 = new PVector(); // stores transformed vector
+
         beginShape();
         for (PVector point : points) {
             // TODO 3: rotate every point with @angle here, hint coming next week
 
             float x0 = point.x; // change these
             float y0 = point.y; // change these
+            // basic solution
+            x0 = point.x * cos(angle) - point.y * sin(angle);
+            y0 = point.x * sin(angle) + point.y * cos(angle);
+
+            /*
+            // solution with matrices
+            PMatrix2D rot = new PMatrix2D(
+                    cos(angle), -sin(angle), 0,
+                    sin(angle), cos(angle), 0);
+
+            rot.mult(point, p2);
+
+            x0=p2.x;
+            y0=p2.y;*/
 
             curveVertex(x0, y0);
         }
