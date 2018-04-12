@@ -11,5 +11,5 @@ repositories {
 
 dependencies {
 
-    compile group: 'org.processing', name: 'core', version: '3.3.6-1'
+    compile group: 'org.processing', name: 'core', version: '3.3.7'
 }
