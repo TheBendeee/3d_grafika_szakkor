@@ -28,6 +28,8 @@ public class DrawShapes extends PApplet {
 
     PShape torus;
 
+    PShader shaderObj;
+
     /*float rotateAngle = 0;
     float zEye = -300;
     float radiusCenter = 100;
@@ -44,6 +46,9 @@ public class DrawShapes extends PApplet {
         paraboloid = createParaboloid();
         tetra = createTetrahidron();
         sphere2 = createDuplaParabola();
+        shaderObj = loadShader("szakkor22222222222222222/shadertoy.glsl");
+        shaderObj.set("iResolution",(float)width,(float)height);
+
         //torus = createTorus();
     }
 
@@ -60,14 +65,16 @@ public class DrawShapes extends PApplet {
         line(0,-1000,0,0,1000,0);
         line(0,0,-1000,0,0,1000);
         camera(xEye,yEye,zEye,xEye + forgatás.x,yEye + forgatás.y + dőlésszög.y,zEye + forgatás.z + dőlésszög.z,0,dőlésszög.y + 1,dőlésszög.z);
-        sphere(r);
+        shaderObj.set("iTime",millis()/1000f);
+        shader(shaderObj);
+        shape(sphere);
 
-        r -= 0.05;
+        /*r -= 0.05;
 
         if (r <= 0){
             float rv = r;
             r = -rv;
-        }
+        }*/
     }
 
     public void keyPressed() {
